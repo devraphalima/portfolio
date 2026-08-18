@@ -13,7 +13,7 @@ body {
     /* Camada escura + Imagem de fundo */
     background-image: linear-gradient(rgba(13, 17, 23, 0.85), rgba(13, 17, 23, 0.85)), url('sully.png');
     background-repeat: no-repeat;
-    background-position: 75% 200px;
+    background-position: 85% 200px;
     background-size: 600px auto;
     background-attachment: scroll;
     min-height: 150vh;
