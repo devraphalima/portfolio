@@ -12,8 +12,8 @@ body {
     padding: 0;
     background-image: linear-gradient(rgba(13, 17, 23, 0.78), rgba(13, 17, 23, 0.78)), url('wp15630223-minecraft-texture-wallpapers.jpg');
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    background-position: center top;
+    background-size: auto 170%;
     background-attachment: fixed;
     min-height: 150vh;
 }
@@ -129,7 +129,7 @@ body {
     max-width: 1120px;
     min-height: calc(150vh - 112px);
     margin: 0 auto;
-    padding: 40px 32px;
+    padding: 40px 32px 0;
 }
 
 .profile-panel {
@@ -228,7 +228,7 @@ body {
         grid-template-columns: 1fr;
         gap: 28px;
         min-height: 0;
-        padding: 28px 20px;
+        padding: 28px 20px 0;
     }
 
     .readme-panel {
