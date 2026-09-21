@@ -10,12 +10,11 @@ body {
     color: #f0f6fc;
     margin: 0;
     padding: 0;
-    /* Camada escura + Imagem de fundo */
-    background-image: linear-gradient(rgba(13, 17, 23, 0.85), rgba(13, 17, 23, 0.85)), url('sully.png');
+    background-image: linear-gradient(rgba(13, 17, 23, 0.78), rgba(13, 17, 23, 0.78)), url('wp15630223-minecraft-texture-wallpapers.jpg');
     background-repeat: no-repeat;
-    background-position: 85% 200px;
-    background-size: 600px auto;
-    background-attachment: scroll;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
     min-height: 150vh;
 }
 
@@ -123,20 +122,61 @@ body {
 
 /* Cartão do projeto */
 .main-container {
-    padding: 32px;
+    display: grid;
+    grid-template-columns: minmax(180px, 240px) minmax(0, 760px);
+    gap: 40px;
+    align-items: stretch;
+    max-width: 1120px;
+    min-height: calc(150vh - 112px);
+    margin: 0 auto;
+    padding: 40px 32px;
+}
+
+.profile-panel {
+    text-align: left;
+}
+
+.profile-avatar {
+    display: block;
+    width: 190px;
+    height: 190px;
+    border: 1px solid #30363d;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 18px;
+}
+
+.profile-panel h1 {
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.profile-panel p {
+    color: #8b949e;
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+.readme-panel {
+    min-width: 0;
+    height: 100%;
+    padding: 24px;
+    border: 1px solid #30363d;
+    border-radius: 8px;
 }
 
 .project-card {
     position: relative;
     display: block;
-    width: min(100%, 420px);
-    height: 250px;
+    width: min(100%, 320px);
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border: 1px solid #30363d;
     border-radius: 10px;
     color: #f0f6fc;
     text-decoration: none;
     background-color: #161b22;
+    margin: 0 auto;
     transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
@@ -181,4 +221,27 @@ body {
 .project-card-content span {
     color: #c9d1d9;
     font-size: 14px;
+}
+
+@media (max-width: 700px) {
+    .main-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        min-height: 0;
+        padding: 28px 20px;
+    }
+
+    .readme-panel {
+        min-height: 280px;
+    }
+
+    .profile-panel {
+        text-align: center;
+    }
+
+    .profile-avatar {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 14px;
+    }
 }
