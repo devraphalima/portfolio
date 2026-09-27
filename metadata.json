@@ -1,0 +1,6 @@
+{
+  "name": "devraphalima - Portfolio",
+  "description": "Portfolio no estilo perfil do GitHub com aquário tamagotchi, jogo marble shot e efeitos visuais.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

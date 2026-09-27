@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>devraphalima (Raphael)</title>
+    <meta name="description" content="Portfolio no estilo perfil do GitHub com aquário tamagotchi, jogo marble shot e efeitos visuais." />
+    <meta property="og:title" content="devraphalima (Raphael)" />
+    <meta property="og:description" content="Portfolio no estilo perfil do GitHub com aquário tamagotchi, jogo marble shot e efeitos visuais." />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Barra Superior (Top Header) -->
+    <header class="top-nav">
+        <div class="nav-left">
+            <button class="icon-btn">☰</button>
+            <svg class="github-logo" viewBox="0 0 16 16" width="32" height="32" fill="white">
+                <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
+            </svg>
+            <span class="nav-title">devraphalima</span>
+        </div>
+
+        <div class="nav-right">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <span class="search-text">Type <kbd>/</kbd> to search</span>
+            </div>
+            <div class="nav-icons">
+                <span class="icon-btn border-btn">👥 ▾</span>
+                <span class="icon-btn border-btn">+ ▾</span>
+                <span class="icon-btn border-btn">☉</span>
+                <span class="icon-btn border-btn">⎇</span>
+                <span class="icon-btn border-btn">📑</span>
+                <span class="icon-btn border-btn">📥</span>
+            </div>
+            <img class="avatar-header" src="pic.JPG" alt="Perfil">
+        </div>
+    </header>
+
+    <!-- Barra de Abas (Subnav) -->
+    <div class="subnav">
+        <a href="#" class="tab active">Overview</a>
+        <a href="#" class="tab">Repositories <span class="badge">2</span></a>
+        <a href="#" class="tab">Projects</a>
+        <a href="#" class="tab">Packages</a>
+        <a href="#" class="tab">Stars</a>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-container">
+        <aside class="profile-panel">
+            <img class="profile-avatar" src="pic.JPG" alt="Foto de perfil de devraphalima">
+            <h1>devraphalima</h1>
+            <p>Raphael</p>
+            <!-- Aquário / Tamagotchi -->
+            <div class="tamagotchi-container">
+                <div class="tamagotchi-screen">
+                    <div class="pet-fish">🐠</div>
+                    <div class="water-bubbles">🫧</div>
+                    <!-- Contorno da Borda da Tela (avança ao alimentar) -->
+                    <svg class="tamagotchi-screen-border" viewBox="0 0 90 80">
+                        <rect class="screen-border-bg" x="1.5" y="1.5" width="87" height="77" rx="10.5" ry="10.5" />
+                        <rect class="screen-border-fill" id="screen-border-fill" x="1.5" y="1.5" width="87" height="77" rx="10.5" ry="10.5" />
+                    </svg>
+                </div>
+                <div class="tamagotchi-buttons">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+            <section class="marble-game" aria-label="Jogo de bolinhas coloridas">
+                <div class="marble-board" id="marble-board" tabindex="0" aria-label="Jogo Marble Shot">
+                    <!-- Pontuação acumulada no topo (apenas o número, oculto por padrão, zera ao desacelerar) -->
+                    <span class="marble-top-score" id="marble-top-score" aria-label="Pontos acumulados">0</span>
+
+                    <svg class="marble-track-svg" viewBox="0 0 220 178" preserveAspectRatio="none">
+                        <!-- Trilho escavado / Calha ao redor do centro -->
+                        <path class="track-channel-shadow" d="M 28 26 L 192 26 C 208 26, 208 42, 208 56 L 208 122 C 208 140, 208 152, 192 152 L 28 152 C 12 152, 12 140, 12 122 L 12 94 C 12 82, 20 80, 32 80" />
+                        <path class="track-channel" d="M 28 26 L 192 26 C 208 26, 208 42, 208 56 L 208 122 C 208 140, 208 152, 192 152 L 28 152 C 12 152, 12 140, 12 122 L 12 94 C 12 82, 20 80, 32 80" />
+                        <path id="marble-path-guide" class="track-line" d="M 28 26 L 192 26 C 208 26, 208 42, 208 56 L 208 122 C 208 140, 208 152, 192 152 L 28 152 C 12 152, 12 140, 12 122 L 12 94 C 12 82, 20 80, 32 80" />
+                    </svg>
+
+                    <!-- Buraco de Saída inicial (De onde as bolinhas nascem) -->
+                    <div class="marble-hole hole-start">
+                        <div class="hole-rim"></div>
+                        <div class="hole-pit"></div>
+                    </div>
+
+                    <!-- Buraco Final (Onde as bolinhas entram e somem) -->
+                    <div class="marble-hole hole-end">
+                        <div class="hole-rim"></div>
+                        <div class="hole-pit"></div>
+                    </div>
+
+                    <!-- Bolinhas na pista -->
+                    <div class="marble-track" id="marble-track"></div>
+
+                    <!-- Canhão Central (Estilo Zuma) -->
+                    <div class="marble-cannon-pedestal">
+                        <div class="cannon-turret" id="launcher-turret">
+                            <div class="cannon-barrel" id="launcher-barrel"></div>
+                            <span class="launcher-marble aqua" id="launcher-marble"></span>
+                        </div>
+                        <div class="cannon-next-box">
+                            <span class="next-marble gold" id="next-marble"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Caça-Palavras Interativo que Atualiza -->
+            <section class="wordsearch-widget" id="wordsearch-widget" aria-label="Caça-palavras dev">
+                <div class="wordsearch-header">
+                    <button class="wordsearch-refresh-btn" id="wordsearch-refresh-btn" type="button" title="Gerar novo caça-palavras" aria-label="Atualizar caça-palavras">
+                        <span class="refresh-icon">🔄</span>
+                    </button>
+                </div>
+
+                <div class="wordsearch-board-wrap" id="wordsearch-board-wrap">
+                    <div class="wordsearch-grid" id="wordsearch-grid" role="grid"></div>
+                </div>
+
+                <div class="wordsearch-wordlist" id="wordsearch-wordlist" aria-label="Palavras a encontrar"></div>
+            </section>
+        </aside>
+
+        <section class="readme-panel" aria-label="README do projeto">
+            <a class="project-card" href="https://sistematikets-plum.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <img src="support-desk-readme.svg" alt="Capa do projeto Sistematikets" class="project-cover">
+                <span class="project-card-content">
+                    <strong>Sistematikets</strong>
+                    <span>Acessar projeto</span>
+                </span>
+            </a>
+        </section>
+    </main>
+
+    <script>
+        const marbleBoard = document.querySelector('#marble-board');
+        const marbleTrack = document.querySelector('#marble-track');
+        const launcherMarble = document.querySelector('#launcher-marble');
+        const launcherTurret = document.querySelector('#launcher-turret');
+        const launcherBarrel = document.querySelector('#launcher-barrel');
+        const nextMarbleEl = document.querySelector('#next-marble');
+        const guidePath = document.querySelector('#marble-path-guide');
+        const topScoreEl = document.querySelector('#marble-top-score');
+        const marbleColors = ['coral', 'aqua', 'lime', 'violet', 'gold'];
+
+        let currentColor = 'aqua';
+        let nextColor = 'gold';
+        let score = 0;
+        let speedAccumulatedScore = 0;
+        let marbles = [];
+        let shots = [];
+        let lastTime = performance.now();
+        const marbleSpeed = 14; // Velocidade suave e cadenciada
+
+        // Estado do Modo Acelerado
+        let speedModeActive = false;
+        let speedModeTimer = 0;
+
+        // Atualizar pontuação acumulada no topo (apenas número, oculto por padrão)
+        function updateTopScore(addPoints = false, isReset = false) {
+            if (!topScoreEl) return;
+            topScoreEl.textContent = speedAccumulatedScore;
+
+            if (speedAccumulatedScore > 0) {
+                topScoreEl.classList.add('active');
+            } else {
+                topScoreEl.classList.remove('active');
+            }
+
+            if (addPoints) {
+                topScoreEl.classList.remove('pulse');
+                void topScoreEl.offsetWidth;
+                topScoreEl.classList.add('pulse');
+                setTimeout(() => topScoreEl.classList.remove('pulse'), 220);
+            }
+
+            if (isReset) {
+                topScoreEl.classList.remove('reset-fade');
+                void topScoreEl.offsetWidth;
+                topScoreEl.classList.add('reset-fade');
+                setTimeout(() => topScoreEl.classList.remove('reset-fade'), 300);
+            }
+        }
+
+        // Spawn de pontinhos flutuantes que sobem das bolinhas
+        function spawnScorePopup(x, y, text) {
+            const popup = document.createElement('span');
+            popup.className = 'score-popup';
+            popup.textContent = text;
+            popup.style.left = x + 'px';
+            popup.style.top = y + 'px';
+            marbleBoard.appendChild(popup);
+            setTimeout(() => popup.remove(), 900);
+        }
+
+        // Inicializar cores do canhão e próxima bolinha
+        if (launcherMarble) launcherMarble.className = `launcher-marble ${currentColor}`;
+        if (nextMarbleEl) nextMarbleEl.className = `next-marble ${nextColor}`;
+
+        // Função para sortear cor (prioriza cores existentes na fila para dinamismo)
+        function getRandomColor() {
+            const activeColors = [...new Set(marbles.filter(m => !m.isExiting).map(m => m.color))];
+            if (activeColors.length > 0 && Math.random() < 0.75) {
+                return activeColors[Math.floor(Math.random() * activeColors.length)];
+            }
+            return marbleColors[Math.floor(Math.random() * marbleColors.length)];
+        }
+
+        let spawnStreakColor = null;
+        let spawnStreakRemaining = 0;
+
+        function getSpawnColor() {
+            if (spawnStreakRemaining <= 0 || !spawnStreakColor) {
+                spawnStreakColor = marbleColors[Math.floor(Math.random() * marbleColors.length)];
+                spawnStreakRemaining = Math.floor(Math.random() * 3) + 2; // Grupos de 2 a 4 da mesma cor
+            }
+            spawnStreakRemaining--;
+            return spawnStreakColor;
+        }
+
+        // Criar onda de choque visual no ponto de inserção
+        function createShockwave(x, y, color) {
+            const sw = document.createElement('span');
+            sw.className = `insert-shockwave ${color}`;
+            sw.style.left = x + 'px';
+            sw.style.top = y + 'px';
+            marbleBoard.appendChild(sw);
+            setTimeout(() => {
+                sw.remove();
+            }, 700);
+        }
+
+        // Checar e processar combinações caso o espaço tenha sido aberto
+        function checkMatchAfterInsertion(newMarble) {
+            const curIndex = marbles.indexOf(newMarble);
+            if (curIndex === -1 || newMarble.isExiting) return;
+
+            let start = curIndex;
+            while (start > 0 && !marbles[start - 1].isExiting && !marbles[start - 1].isMatching && marbles[start - 1].color === newMarble.color) {
+                start--;
+            }
+
+            let end = curIndex;
+            while (end < marbles.length - 1 && !marbles[end + 1].isExiting && !marbles[end + 1].isMatching && marbles[end + 1].color === newMarble.color) {
+                end++;
+            }
+
+            const matchCount = end - start + 1;
+
+            if (matchCount >= 2) {
+                // Elimina rápido com animação de estouro
+                const matchedMarbles = [];
+                for (let k = start; k <= end; k++) {
+                    marbles[k].isMatching = true;
+                    marbles[k].isExiting = true;
+                    marbles[k].el.classList.add('marble-hit');
+                    matchedMarbles.push(marbles[k]);
+                }
+
+                setTimeout(() => {
+                    matchedMarbles.forEach((m) => {
+                        m.el.remove();
+                    });
+
+                    // Remove da fileira
+                    for (let k = marbles.length - 1; k >= 0; k--) {
+                        if (matchedMarbles.includes(marbles[k])) {
+                            marbles.splice(k, 1);
+                        }
+                    }
+                }, 220);
+
+                // Se estiver no modo acelerado, acumula de 10 em 10 pontos no topo
+                if (speedModeActive) {
+                    score += 10;
+                    speedAccumulatedScore += 10;
+                    updateTopScore(true, false);
+                    spawnScorePopup(newMarble.x, newMarble.y - 14, "+10");
+                    speedModeTimer = 1.2;
+                }
+            }
+        }
+
+        // Criar nova bolinha que sai do buraco inicial (IN)
+        function spawnMarble() {
+            const color = getSpawnColor();
+            const el = document.createElement('span');
+            el.className = `marble ${color} marble-emerge`;
+            marbleTrack.appendChild(el);
+
+            const marble = {
+                el,
+                color,
+                distance: 0,
+                x: 0,
+                y: 0,
+                isExiting: false,
+                isMatching: false,
+                isInserting: false
+            };
+            marbles.push(marble);
+        }
+
+        // Clique com botão direito troca a bolinha carregada pela próxima cor
+        marbleBoard.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            const temp = currentColor;
+            currentColor = nextColor;
+            nextColor = temp;
+            launcherMarble.className = `launcher-marble ${currentColor}`;
+            if (nextMarbleEl) {
+                nextMarbleEl.className = `next-marble ${nextColor}`;
+            }
+        });
+
+        // Atualizar rotação do canhão central ao mover o mouse
+        marbleBoard.addEventListener('mousemove', (e) => {
+            const rect = marbleBoard.getBoundingClientRect();
+            const mx = e.clientX - rect.left;
+            const my = e.clientY - rect.top;
+            const lx = rect.width / 2;
+            const ly = rect.height / 2;
+
+            // Rotação 360° do canhão apontando para o cursor
+            const angle = Math.atan2(my - ly, mx - lx) * (180 / Math.PI) + 90;
+            if (launcherTurret) {
+                launcherTurret.style.transform = `rotate(${angle}deg)`;
+            }
+        });
+
+        // Disparo ao clicar (a partir do centro do canhão em direção ao clique)
+        marbleBoard.addEventListener('click', (e) => {
+            const rect = marbleBoard.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const clickY = e.clientY - rect.top;
+
+            const lx = rect.width / 2;
+            const ly = rect.height / 2;
+            const dx = clickX - lx;
+            const dy = clickY - ly;
+            const len = Math.hypot(dx, dy);
+
+            if (len === 0) return;
+
+            const shotSpeed = 220;
+            const spawnOffset = 20;
+            const startX = lx + (dx / len) * spawnOffset;
+            const startY = ly + (dy / len) * spawnOffset;
+
+            const shotEl = document.createElement('span');
+            shotEl.className = `marble flying-marble ${currentColor}`;
+            shotEl.style.left = startX + 'px';
+            shotEl.style.top = startY + 'px';
+            marbleBoard.appendChild(shotEl);
+
+            shots.push({
+                el: shotEl,
+                color: currentColor,
+                x: startX,
+                y: startY,
+                vx: (dx / len) * shotSpeed,
+                vy: (dy / len) * shotSpeed
+            });
+
+            // Atualiza bolinha carregada para a próxima e sorteia nova próxima
+            currentColor = nextColor;
+            nextColor = getRandomColor();
+            launcherMarble.className = `launcher-marble ${currentColor}`;
+            if (nextMarbleEl) {
+                nextMarbleEl.className = `next-marble ${nextColor}`;
+            }
+        });
+
+        // Loop principal do jogo (Animação contínua)
+        function gameLoop(now) {
+            const dt = Math.min((now - lastTime) / 1000, 0.1);
+            lastTime = now;
+
+            const rect = marbleBoard.getBoundingClientRect();
+            const boardWidth = rect.width || 220;
+            const boardHeight = rect.height || 178;
+            const pathLength = guidePath.getTotalLength();
+            const spacing = 17.2; // Espaçamento para as bolinhas ficarem coladas sem vão
+
+            // Spawn de novas bolinhas no buraco inicial (coladinhas na última que saiu)
+            const lastMarble = marbles.length > 0 ? marbles[marbles.length - 1] : null;
+            if (!lastMarble || (!lastMarble.isExiting && lastMarble.distance >= spacing)) {
+                if (marbles.length < 35) {
+                    spawnMarble();
+                }
+            }
+
+            let isCatchingUpNow = false;
+
+            // Atualizar bolinhas no trilho (com abertura suave de espaço para novas integrantes)
+            for (let i = 0; i < marbles.length; i++) {
+                const m = marbles[i];
+                if (m.isExiting) continue;
+
+                // Animação progressiva de abertura de espaço para bolinhas recém-inseridas
+                if (m.isInserting) {
+                    m.slotProgress = Math.min(1, m.slotProgress + dt * 1.7); // ~0.58s para abrir espaço com calma
+                    const ease = 1 - Math.pow(1 - m.slotProgress, 3);
+                    m.slotSize = m.targetSlotSize * ease;
+
+                    if (m.slotProgress >= 1) {
+                        m.slotSize = m.targetSlotSize;
+                        m.isInserting = false;
+                        checkMatchAfterInsertion(m);
+                    }
+                }
+
+                // Encontra a bolinha anterior viva à frente dela na fila
+                let prev = null;
+                for (let j = i - 1; j >= 0; j--) {
+                    if (!marbles[j].isExiting) {
+                        prev = marbles[j];
+                        break;
+                    }
+                }
+
+                if (!prev) {
+                    // Primeira bolinha da fila avança na velocidade padrão
+                    m.distance += marbleSpeed * dt;
+                    m.el.classList.remove('marble-rushing');
+                } else {
+                    // Limite para ficar encostada na da frente (acompanha perfeitamente a abertura do espaço)
+                    const reqSpacing = (m.slotSize !== undefined ? m.slotSize : spacing);
+                    const targetDist = prev.distance - reqSpacing;
+                    if (m.distance < targetDist) {
+                        // Se abriu espaço (ex: bolinhas eliminadas), as de trás aceleram para alcançar
+                        m.distance = Math.min(targetDist, m.distance + marbleSpeed * 3.5 * dt);
+                        if (targetDist - m.distance > 2) {
+                            isCatchingUpNow = true;
+                            m.el.classList.add('marble-rushing');
+                        } else {
+                            m.el.classList.remove('marble-rushing');
+                        }
+                    } else {
+                        // Colada na da frente (afasta suavemente conforme a nova bolinha abre espaço)
+                        m.distance = targetDist;
+                        m.el.classList.remove('marble-rushing');
+                    }
+                }
+
+                // Chegou ao buraco final (OUT) -> entra e some!
+                if (m.distance >= pathLength) {
+                    m.isExiting = true;
+                    m.el.classList.add('marble-sink');
+                    setTimeout(() => {
+                        m.el.remove();
+                    }, 220);
+                    marbles.splice(i, 1);
+                    i--;
+                    continue;
+                }
+
+                // Posiciona ao longo do caminho da calha
+                const pt = guidePath.getPointAtLength(Math.max(0, Math.min(pathLength, m.distance)));
+                m.x = (pt.x / 220) * boardWidth;
+                m.y = (pt.y / 178) * boardHeight;
+                m.el.style.left = m.x + 'px';
+                m.el.style.top = m.y + 'px';
+            }
+
+            // Gerenciar estado do Modo Acelerado
+            if (isCatchingUpNow) {
+                speedModeActive = true;
+                speedModeTimer = 1.2; // Janela ativa enquanto as bolinhas aceleram para alcançar
+            } else if (speedModeTimer > 0) {
+                speedModeTimer -= dt;
+                speedModeActive = true;
+            } else if (speedModeActive) {
+                // Desacelerou: zera os pontos acumulados!
+                speedModeActive = false;
+                if (speedAccumulatedScore > 0) {
+                    speedAccumulatedScore = 0;
+                    updateTopScore(false, true);
+                }
+            }
+
+            // Atualizar disparos
+            for (let s = shots.length - 1; s >= 0; s--) {
+                const shot = shots[s];
+                shot.x += shot.vx * dt;
+                shot.y += shot.vy * dt;
+                shot.el.style.left = shot.x + 'px';
+                shot.el.style.top = shot.y + 'px';
+
+                // Checar colisão com bolinhas do trilho
+                let hitIndex = -1;
+                for (let i = 0; i < marbles.length; i++) {
+                    const m = marbles[i];
+                    if (m.isExiting || m.isMatching || m.isInserting) continue;
+                    const dist = Math.hypot(shot.x - m.x, shot.y - m.y);
+                    if (dist < 17.5) {
+                        hitIndex = i;
+                        break;
+                    }
+                }
+
+                if (hitIndex !== -1) {
+                    const hitMarble = marbles[hitIndex];
+
+                    // SE FOR DA MESMA COR: Elimina rápido!
+                    if (hitMarble.color === shot.color) {
+                        createShockwave(shot.x, shot.y, shot.color);
+
+                        // Encontra todas as bolinhas contíguas conectadas da mesma cor
+                        let start = hitIndex;
+                        while (start > 0 && !marbles[start - 1].isExiting && marbles[start - 1].color === shot.color) {
+                            start--;
+                        }
+                        let end = hitIndex;
+                        while (end < marbles.length - 1 && !marbles[end + 1].isExiting && marbles[end + 1].color === shot.color) {
+                            end++;
+                        }
+
+                        const toRemove = [];
+                        for (let k = start; k <= end; k++) {
+                            const m = marbles[k];
+                            m.isExiting = true;
+                            m.el.classList.add('marble-hit');
+                            toRemove.push(m);
+                        }
+
+                        // O projétil também estoura no ponto do impacto
+                        const flyingEl = shot.el;
+                        flyingEl.classList.add('marble-hit');
+                        shots.splice(s, 1);
+
+                        setTimeout(() => {
+                            toRemove.forEach(m => m.el.remove());
+                            flyingEl.remove();
+                        }, 220);
+
+                        for (let k = marbles.length - 1; k >= 0; k--) {
+                            if (toRemove.includes(marbles[k])) {
+                                marbles.splice(k, 1);
+                            }
+                        }
+
+                        // Se estiver no modo acelerado, acumula de 10 em 10 pontos no topo
+                        if (speedModeActive) {
+                            score += 10;
+                            speedAccumulatedScore += 10;
+                            updateTopScore(true, false);
+                            spawnScorePopup(shot.x, shot.y - 14, "+10");
+                            speedModeTimer = 1.2;
+                        }
+                        continue;
+                    }
+
+                    // SE FOR DE COR DIFERENTE: Entra na fileira e abre espaço visivelmente!
+                    const testAheadDist = Math.min(pathLength, hitMarble.distance + spacing * 0.45);
+                    const testBehindDist = Math.max(0, hitMarble.distance - spacing * 0.45);
+
+                    const ptAhead = guidePath.getPointAtLength(testAheadDist);
+                    const xAhead = (ptAhead.x / 220) * boardWidth;
+                    const yAhead = (ptAhead.y / 178) * boardHeight;
+
+                    const ptBehind = guidePath.getPointAtLength(testBehindDist);
+                    const xBehind = (ptBehind.x / 220) * boardWidth;
+                    const yBehind = (ptBehind.y / 178) * boardHeight;
+
+                    const distAhead = Math.hypot(shot.x - xAhead, shot.y - yAhead);
+                    const distBehind = Math.hypot(shot.x - xBehind, shot.y - yBehind);
+
+                    const insertIndex = (distAhead < distBehind) ? hitIndex : hitIndex + 1;
+
+                    // Cria onda de choque suave e sutil no ponto do impacto
+                    createShockwave(shot.x, shot.y, shot.color);
+
+                    // Cria o elemento da bolinha que passa a fazer parte da fileira
+                    const newEl = document.createElement('span');
+                    newEl.className = `marble ${shot.color} marble-inserted`;
+                    marbleTrack.appendChild(newEl);
+
+                    const initialDist = (insertIndex === 0)
+                        ? hitMarble.distance
+                        : marbles[insertIndex - 1].distance;
+
+                    const newMarble = {
+                        el: newEl,
+                        color: shot.color,
+                        slotSize: 0,              // Começa em 0 para as outras bolinhas abrirem espaço gradativamente
+                        targetSlotSize: spacing,  // Vai expandir até 17.2px
+                        slotProgress: 0,
+                        distance: initialDist,
+                        x: shot.x,
+                        y: shot.y,
+                        isExiting: false,
+                        isMatching: false,
+                        isInserting: true
+                    };
+
+                    // Insere na fileira (as bolinhas de trás irão se afastar suavemente a cada frame)
+                    marbles.splice(insertIndex, 0, newMarble);
+
+                    // Remove o projétil em voo
+                    shot.el.remove();
+                    shots.splice(s, 1);
+                    continue;
+                }
+
+                // Remove disparo se saiu da tela
+                if (shot.x < -10 || shot.x > boardWidth + 10 || shot.y < -10 || shot.y > boardHeight + 10) {
+                    shot.el.remove();
+                    shots.splice(s, 1);
+                }
+            }
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Iniciar loop do jogo
+        requestAnimationFrame(gameLoop);
+
+        // Efeito de Mosaico do Mouse (Commit Pattern)
+        document.addEventListener('mousemove', function(e) {
+            document.body.style.setProperty('--mouse-x', e.clientX + 'px');
+            document.body.style.setProperty('--mouse-y', e.clientY + 'px');
+        });
+
+        // Interação com o Aquário Tamagotchi (Alimentar e Contorno da Borda da Tela)
+        const tamagotchiContainer = document.querySelector('.tamagotchi-container');
+        const tamagotchiScreen = document.querySelector('.tamagotchi-screen');
+        const tamagotchiButtons = document.querySelectorAll('.tamagotchi-buttons span');
+        const screenBorderSvg = document.querySelector('.tamagotchi-screen-border');
+        const screenBorderFill = document.querySelector('#screen-border-fill');
+
+        let screenBorderLength = 0;
+        let borderHideTimeout = null;
+        const maxFeedLevel = 1000; // Avança bem pouco por clique para permitir 500 a 1000 cliques
+        let feedLevel = 0;
+        try {
+            feedLevel = parseInt(localStorage.getItem('tamagotchi_feed_count') || '0', 10);
+            if (isNaN(feedLevel)) feedLevel = 0;
+        } catch (e) {
+            feedLevel = 0;
+        }
+
+        let lastHeartTime = 0;
+
+        function showScreenBorderTemporarily() {
+            if (!screenBorderSvg) return;
+            screenBorderSvg.classList.add('visible');
+            if (borderHideTimeout) clearTimeout(borderHideTimeout);
+            borderHideTimeout = setTimeout(() => {
+                screenBorderSvg.classList.remove('visible');
+            }, 2000); // Oculta a barrinha após 2 segundos sem novos cliques
+        }
+
+        function initScreenBorder() {
+            if (!screenBorderFill) return;
+            try {
+                screenBorderLength = screenBorderFill.getTotalLength ? screenBorderFill.getTotalLength() : 310;
+            } catch (e) {
+                screenBorderLength = 310;
+            }
+            screenBorderFill.style.strokeDasharray = screenBorderLength;
+            updateScreenBorder();
+        }
+        initScreenBorder();
+
+        function updateScreenBorder() {
+            if (!screenBorderFill || screenBorderLength <= 0) return;
+            const ratio = Math.max(0, Math.min(1, feedLevel / maxFeedLevel));
+            screenBorderFill.style.strokeDashoffset = screenBorderLength * (1 - ratio);
+
+            if (ratio >= 1) {
+                screenBorderFill.classList.add('full');
+                if (tamagotchiScreen) tamagotchiScreen.classList.add('screen-fed-full');
+                if (tamagotchiContainer) tamagotchiContainer.title = `Peixinho 100% alimentado! (${feedLevel} camarões) 🌟`;
+            } else if (ratio > 0) {
+                screenBorderFill.classList.remove('full');
+                if (tamagotchiScreen) tamagotchiScreen.classList.remove('screen-fed-full');
+                if (tamagotchiContainer) tamagotchiContainer.title = `Camarões dados: ${feedLevel} / ${maxFeedLevel}`;
+            } else {
+                screenBorderFill.classList.remove('full');
+                if (tamagotchiScreen) tamagotchiScreen.classList.remove('screen-fed-full');
+                if (tamagotchiContainer) tamagotchiContainer.title = 'Clique para alimentar seu peixinho!';
+            }
+        }
+
+        function triggerTamagotchiFeed() {
+            // Avança bem pouco a cada clique
+            feedLevel = Math.min(maxFeedLevel, feedLevel + 1);
+            try {
+                localStorage.setItem('tamagotchi_feed_count', feedLevel);
+            } catch (e) {}
+            updateScreenBorder();
+            showScreenBorderTemporarily();
+
+            // Evita sobrecarregar o DOM com muitos camarões em cliques contínuos/rápidos
+            const existingFood = tamagotchiScreen.querySelectorAll('.feed-shrimp');
+            if (existingFood.length < 8) {
+                const food = document.createElement('div');
+                food.className = 'feed-shrimp';
+                food.textContent = '🦐';
+                food.style.position = 'absolute';
+                food.style.top = '0px';
+                food.style.left = (15 + Math.random() * 60) + 'px';
+                food.style.fontSize = '11px';
+                food.style.transition = 'top 1.1s ease-in, opacity 0.4s ease 0.8s';
+                food.style.zIndex = '10';
+                tamagotchiScreen.appendChild(food);
+                requestAnimationFrame(() => {
+                    food.style.top = '60px';
+                });
+                setTimeout(() => {
+                    food.style.opacity = '0';
+                    setTimeout(() => food.remove(), 400);
+                }, 900);
+            }
+
+            // Coraçãozinho com throttle para cliques frequentes
+            const now = performance.now();
+            if (now - lastHeartTime > 350) {
+                lastHeartTime = now;
+                const heart = document.createElement('div');
+                heart.textContent = feedLevel >= maxFeedLevel ? '💖' : '❤️';
+                heart.style.position = 'absolute';
+                heart.style.top = '30px';
+                heart.style.left = (25 + Math.random() * 35) + 'px';
+                heart.style.fontSize = '12px';
+                heart.style.transition = 'transform 0.8s ease-out, opacity 0.8s ease-out';
+                tamagotchiScreen.appendChild(heart);
+                requestAnimationFrame(() => {
+                    heart.style.transform = 'translateY(-20px) scale(1.3)';
+                    heart.style.opacity = '0';
+                });
+                setTimeout(() => heart.remove(), 800);
+            }
+        }
+
+        if (tamagotchiContainer) {
+            tamagotchiContainer.style.cursor = 'pointer';
+            tamagotchiContainer.title = 'Clique para alimentar seu peixinho!';
+            tamagotchiContainer.addEventListener('click', triggerTamagotchiFeed);
+        }
+        tamagotchiButtons.forEach(btn => {
+            btn.style.cursor = 'pointer';
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                triggerTamagotchiFeed();
+            });
+        });
+
+        // ==========================================
+        // CAÇA-PALAVRAS INTERATIVO DEV (QUE ATUALIZA)
+        // ==========================================
+        const wordSearchWordsPool = [
+            'HTML', 'CSS', 'GIT', 'NODE', 'CODE', 'REACT',
+            'API', 'LINUX', 'JAVA', 'RUST', 'VITE', 'BYTE',
+            'BUG', 'LOOP', 'ALGO', 'DATA', 'DEV', 'SQL',
+            'TEST', 'WEB', 'JSON', 'PULL', 'PUSH', 'DOCKER',
+            'WIFI', 'PIXEL', 'CLOUD', 'STACK', 'ARRAY', 'ASYNC',
+            'FETCH', 'REDIS', 'LINKS', 'INPUT', 'TOKEN', 'BUILD',
+            'DEBUG', 'PROXY', 'FRONT', 'BACK', 'CACHE', 'CLONE',
+            'COMMIT', 'BRANCH', 'MERGE', 'FORK', 'STATE', 'PROPS',
+            'HOOK', 'ROUTER', 'CLI', 'NPM', 'YARN', 'BASH',
+            'SHELL', 'RUBY', 'SWIFT', 'KOTLIN', 'GRAPH', 'FLOAT',
+            'CONST', 'WHILE', 'CLASS', 'QUERY', 'REST', 'AUTH',
+            'TOKEN', 'CYBER', 'LOGIC', 'INTEL', 'LINUX', 'MAC'
+        ];
+
+        const WS_SIZE = 8;
+        let wsGrid = [];
+        let wsTargetWords = []; // array of { word, found, cells: [{r, c}] }
+        let wsRecentWords = []; // Histórico para não repetir palavras recentes
+        let wsSelecting = false;
+        let wsStartCell = null;
+        let wsCurrentCell = null;
+
+        const wsGridEl = document.querySelector('#wordsearch-grid');
+        const wsWordlistEl = document.querySelector('#wordsearch-wordlist');
+        const wsRefreshBtn = document.querySelector('#wordsearch-refresh-btn');
+
+        // Embaralhar array
+        function shuffleArray(arr) {
+            const copy = [...arr];
+            for (let i = copy.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [copy[i], copy[j]] = [copy[j], copy[i]];
+            }
+            return copy;
+        }
+
+        // Gera novo Caça-Palavras dinâmico e sempre com palavras novas
+        function generateWordSearch() {
+            wsSelecting = false;
+            wsStartCell = null;
+            wsCurrentCell = null;
+
+            // Filtra palavras para não repetir as usadas recentemente
+            let availableWords = wordSearchWordsPool.filter(w => !wsRecentWords.includes(w));
+            if (availableWords.length < 12) {
+                // Se a lista de recentes ficou muito grande, esvazia mantendo apenas as últimas
+                wsRecentWords = wsRecentWords.slice(-4);
+                availableWords = wordSearchWordsPool.filter(w => !wsRecentWords.includes(w));
+            }
+
+            const directions = [
+                [0, 1],   // horizontal dir
+                [1, 0],   // vertical baixo
+                [1, 1],   // diagonal descendo dir
+                [-1, 1],  // diagonal subindo dir
+                [0, -1],  // horizontal esq
+                [1, -1]   // diagonal descendo esq
+            ];
+
+            let success = false;
+            let attempts = 0;
+
+            while (!success && attempts < 150) {
+                attempts++;
+                // Sorteia 4 palavras diferentes a cada tentativa
+                const shuffled = shuffleArray(availableWords);
+                const selectedWords = [];
+                for (const w of shuffled) {
+                    if (w.length >= 3 && w.length <= 6 && !selectedWords.includes(w)) {
+                        selectedWords.push(w);
+                        if (selectedWords.length === 4) break;
+                    }
+                }
+
+                // Ordena por tamanho descrescente (palavras maiores primeiro facilitam encaixe)
+                selectedWords.sort((a, b) => b.length - a.length);
+
+                // Matriz vazia 8x8
+                const tempGrid = Array.from({ length: WS_SIZE }, () => Array(WS_SIZE).fill(''));
+                const placedWords = [];
+                let allPlaced = true;
+
+                for (const word of selectedWords) {
+                    let wordPlaced = false;
+                    const shuffledDirs = shuffleArray(directions);
+
+                    for (let tryPos = 0; tryPos < 50 && !wordPlaced; tryPos++) {
+                        const dir = shuffledDirs[tryPos % shuffledDirs.length];
+                        const r = Math.floor(Math.random() * WS_SIZE);
+                        const c = Math.floor(Math.random() * WS_SIZE);
+
+                        const endR = r + dir[0] * (word.length - 1);
+                        const endC = c + dir[1] * (word.length - 1);
+                        if (endR < 0 || endR >= WS_SIZE || endC < 0 || endC >= WS_SIZE) continue;
+
+                        let conflict = false;
+                        const wordCells = [];
+                        for (let k = 0; k < word.length; k++) {
+                            const curR = r + dir[0] * k;
+                            const curC = c + dir[1] * k;
+                            const existing = tempGrid[curR][curC];
+                            if (existing !== '' && existing !== word[k]) {
+                                conflict = true;
+                                break;
+                            }
+                            wordCells.push({ r: curR, c: curC });
+                        }
+
+                        if (!conflict) {
+                            for (let k = 0; k < word.length; k++) {
+                                const { r: cr, c: cc } = wordCells[k];
+                                tempGrid[cr][cc] = word[k];
+                            }
+                            placedWords.push({ word, found: false, cells: wordCells });
+                            wordPlaced = true;
+                        }
+                    }
+
+                    if (!wordPlaced) {
+                        allPlaced = false;
+                        break;
+                    }
+                }
+
+                if (allPlaced && placedWords.length === 4) {
+                    wsGrid = tempGrid;
+                    wsTargetWords = placedWords;
+                    // Registra no histórico para não repetir na próxima
+                    selectedWords.forEach(w => wsRecentWords.push(w));
+                    if (wsRecentWords.length > 20) {
+                        wsRecentWords = wsRecentWords.slice(-16);
+                    }
+                    success = true;
+                }
+            }
+
+            // Preenche células vazias com letras aleatórias
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            for (let r = 0; r < WS_SIZE; r++) {
+                for (let c = 0; c < WS_SIZE; c++) {
+                    if (wsGrid[r][c] === '') {
+                        wsGrid[r][c] = letters[Math.floor(Math.random() * letters.length)];
+                    }
+                }
+            }
+
+            renderWordSearch();
+        }
+
+        // Renderiza tabuleiro e palavras a encontrar
+        function renderWordSearch() {
+            if (!wsGridEl || !wsWordlistEl) return;
+            wsGridEl.innerHTML = '';
+            wsWordlistEl.innerHTML = '';
+
+            // Grade de células
+            for (let r = 0; r < WS_SIZE; r++) {
+                for (let c = 0; c < WS_SIZE; c++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'wordsearch-cell';
+                    cell.dataset.r = r;
+                    cell.dataset.c = c;
+                    cell.textContent = wsGrid[r][c];
+                    wsGridEl.appendChild(cell);
+                }
+            }
+
+            // Tags das palavras da rodada
+            wsTargetWords.forEach((item, idx) => {
+                const tag = document.createElement('span');
+                tag.className = 'wordsearch-word-tag';
+                tag.id = `ws-tag-${idx}`;
+                tag.textContent = item.word;
+                wsWordlistEl.appendChild(tag);
+            });
+        }
+
+        // Calcula linha reta válida entre início e fim (horizontal, vertical ou diagonal)
+        function getLineCells(r1, c1, r2, c2) {
+            const dr = r2 - r1;
+            const dc = c2 - c1;
+            const absR = Math.abs(dr);
+            const absC = Math.abs(dc);
+
+            // Apenas linhas perfeitamente horizontais, verticais ou a 45 graus
+            if (absR !== 0 && absC !== 0 && absR !== absC) return [];
+
+            const stepR = dr === 0 ? 0 : dr / absR;
+            const stepC = dc === 0 ? 0 : dc / absC;
+            const length = Math.max(absR, absC) + 1;
+
+            const cells = [];
+            for (let i = 0; i < length; i++) {
+                cells.push({ r: r1 + stepR * i, c: c1 + stepC * i });
+            }
+            return cells;
+        }
+
+        // Atualiza destaque visual das células selecionadas durante o arraste
+        function updateSelectionHighlight() {
+            if (!wsGridEl) return;
+            const allCells = wsGridEl.querySelectorAll('.wordsearch-cell');
+            allCells.forEach(cell => cell.classList.remove('selected'));
+
+            if (!wsSelecting || !wsStartCell || !wsCurrentCell) return;
+            const line = getLineCells(wsStartCell.r, wsStartCell.c, wsCurrentCell.r, wsCurrentCell.c);
+            line.forEach(({ r, c }) => {
+                const el = wsGridEl.querySelector(`[data-r="${r}"][data-c="${c}"]`);
+                if (el) el.classList.add('selected');
+            });
+        }
+
+        // Finaliza a seleção e checa se formou alguma das palavras
+        function finishSelection() {
+            if (!wsSelecting || !wsStartCell || !wsCurrentCell) {
+                wsSelecting = false;
+                updateSelectionHighlight();
+                return;
+            }
+
+            const line = getLineCells(wsStartCell.r, wsStartCell.c, wsCurrentCell.r, wsCurrentCell.c);
+            wsSelecting = false;
+            updateSelectionHighlight();
+
+            if (line.length < 2) return;
+
+            // Monta a palavra selecionada (e invertida)
+            let selectedWord = '';
+            for (const { r, c } of line) {
+                selectedWord += wsGrid[r][c];
+            }
+            const revWord = selectedWord.split('').reverse().join('');
+
+            // Checa contra as palavras alvo ainda não encontradas
+            wsTargetWords.forEach((target, idx) => {
+                if (!target.found && (target.word === selectedWord || target.word === revWord)) {
+                    target.found = true;
+                    // Marca as células com cor permanente
+                    line.forEach(({ r, c }) => {
+                        const cellEl = wsGridEl.querySelector(`[data-r="${r}"][data-c="${c}"]`);
+                        if (cellEl) cellEl.classList.add(`found-${idx}`);
+                    });
+                    // Marca o marcador na lista de palavras
+                    const tagEl = document.querySelector(`#ws-tag-${idx}`);
+                    if (tagEl) tagEl.classList.add(`found-${idx}`);
+                }
+            });
+        }
+
+        // Eventos de Mouse e Touch no Grid do Caça-Palavras
+        if (wsGridEl) {
+            wsGridEl.addEventListener('mousedown', (e) => {
+                const cell = e.target.closest('.wordsearch-cell');
+                if (!cell) return;
+                wsSelecting = true;
+                wsStartCell = { r: parseInt(cell.dataset.r, 10), c: parseInt(cell.dataset.c, 10) };
+                wsCurrentCell = { ...wsStartCell };
+                updateSelectionHighlight();
+            });
+
+            wsGridEl.addEventListener('mouseenter', (e) => {
+                if (!wsSelecting) return;
+                const cell = e.target.closest('.wordsearch-cell');
+                if (cell) {
+                    wsCurrentCell = { r: parseInt(cell.dataset.r, 10), c: parseInt(cell.dataset.c, 10) };
+                    updateSelectionHighlight();
+                }
+            }, true);
+
+            window.addEventListener('mouseup', () => {
+                if (wsSelecting) finishSelection();
+            });
+
+            // Suporte a Toque Mobile
+            wsGridEl.addEventListener('touchstart', (e) => {
+                const touch = e.touches[0];
+                const cell = document.elementFromPoint(touch.clientX, touch.clientY)?.closest('.wordsearch-cell');
+                if (!cell) return;
+                wsSelecting = true;
+                wsStartCell = { r: parseInt(cell.dataset.r, 10), c: parseInt(cell.dataset.c, 10) };
+                wsCurrentCell = { ...wsStartCell };
+                updateSelectionHighlight();
+            }, { passive: true });
+
+            wsGridEl.addEventListener('touchmove', (e) => {
+                if (!wsSelecting) return;
+                const touch = e.touches[0];
+                const cell = document.elementFromPoint(touch.clientX, touch.clientY)?.closest('.wordsearch-cell');
+                if (cell) {
+                    wsCurrentCell = { r: parseInt(cell.dataset.r, 10), c: parseInt(cell.dataset.c, 10) };
+                    updateSelectionHighlight();
+                }
+            }, { passive: true });
+
+            wsGridEl.addEventListener('touchend', () => {
+                if (wsSelecting) finishSelection();
+            });
+        }
+
+        // Botão Atualizar / Novo Caça-Palavras
+        if (wsRefreshBtn) {
+            wsRefreshBtn.addEventListener('click', () => {
+                wsRefreshBtn.classList.add('rotating');
+                setTimeout(() => wsRefreshBtn.classList.remove('rotating'), 400);
+                generateWordSearch();
+            });
+        }
+
+        // Inicializa o primeiro Caça-Palavras
+        generateWordSearch();
+    </script>
+
+</body>
+</html>
