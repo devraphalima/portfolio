@@ -144,6 +144,43 @@
         </section>
     </main>
 
+    <section class="contact-section" id="contato" aria-labelledby="contact-title">
+        <div class="contact-heading">
+            <p class="contact-eyebrow">CONTATO</p>
+            <h2 id="contact-title">Vamos conversar?</h2>
+            <p class="contact-intro">Tem uma ideia, uma oportunidade ou quer trocar uma ideia? Me mande uma mensagem.</p>
+        </div>
+
+        <div class="contact-content">
+            <form class="contact-form" id="contact-form" data-recipient="devraphalima@gmail.com">
+                <label for="contact-name">Nome</label>
+                <input id="contact-name" name="name" type="text" placeholder="Seu nome" autocomplete="name" required>
+
+                <label for="contact-email">E-mail</label>
+                <input id="contact-email" name="email" type="email" placeholder="voce@email.com" autocomplete="email" required>
+
+                <label for="contact-message">Mensagem</label>
+                <textarea id="contact-message" name="message" rows="5" placeholder="O que você está planejando?" required></textarea>
+
+                <button class="contact-submit" type="submit">Enviar mensagem</button>
+                <p class="contact-form-note">Seu aplicativo de e-mail será aberto para enviar a mensagem.</p>
+            </form>
+
+            <aside class="contact-card" aria-label="Outras formas de contato">
+                <div>
+                    <h3>E-mail</h3>
+                    <a href="mailto:devraphalima@gmail.com">devraphalima@gmail.com</a>
+                </div>
+                <div>
+                    <h3>Social</h3>
+                    <a class="contact-social-link" href="https://github.com/devraphalima" target="_blank" rel="noopener noreferrer">
+                        GitHub <span aria-hidden="true">↗</span>
+                    </a>
+                </div>
+            </aside>
+        </div>
+    </section>
+
     <script>
         const marbleBoard = document.querySelector('#marble-board');
         const marbleTrack = document.querySelector('#marble-track');
@@ -1068,6 +1105,22 @@
                 wsRefreshBtn.classList.add('rotating');
                 setTimeout(() => wsRefreshBtn.classList.remove('rotating'), 400);
                 generateWordSearch();
+            });
+        }
+
+        const contactForm = document.querySelector('#contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const formData = new FormData(contactForm);
+                const name = formData.get('name');
+                const senderEmail = formData.get('email');
+                const message = formData.get('message');
+                const subject = `Contato pelo portfólio - ${name}`;
+                const body = `Nome: ${name}\nE-mail: ${senderEmail}\n\n${message}`;
+                const recipient = contactForm.dataset.recipient;
+
+                window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             });
         }
 
