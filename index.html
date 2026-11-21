@@ -61,6 +61,7 @@
                     <div class="pet-fish">🐠</div>
                     <div class="water-bubbles">🫧</div>
                     <span class="aquarium-algae" aria-hidden="true" hidden>🌿</span>
+                    <span class="aquarium-castle" aria-hidden="true" hidden>🏰</span>
                     <!-- Contorno da Borda da Tela (avança ao alimentar) -->
                     <svg class="tamagotchi-screen-border" viewBox="0 0 90 80">
                         <rect class="screen-border-bg" x="1.5" y="1.5" width="87" height="77" rx="10.5" ry="10.5" />
@@ -69,7 +70,7 @@
                 </div>
                 <div class="tamagotchi-buttons">
                     <button type="button" aria-label="Adicionar alga" title="Adicionar alga"></button>
-                    <button type="button" aria-label="Alimentar peixe" title="Alimentar peixe"></button>
+                    <button type="button" aria-label="Adicionar castelo" title="Adicionar castelo"></button>
                     <button type="button" aria-label="Alimentar peixe" title="Alimentar peixe"></button>
                 </div>
             </div>
@@ -687,8 +688,10 @@
         const tamagotchiScreen = document.querySelector('.tamagotchi-screen');
         const tamagotchiButtons = document.querySelectorAll('.tamagotchi-buttons button');
         const algaeButton = tamagotchiButtons[0];
-        const feedButtons = Array.from(tamagotchiButtons).slice(1);
+        const castleButton = tamagotchiButtons[1];
+        const feedButtons = Array.from(tamagotchiButtons).slice(2);
         const aquariumAlgae = document.querySelector('.aquarium-algae');
+        const aquariumCastle = document.querySelector('.aquarium-castle');
         const tamagotchiFeedMessage = document.querySelector('#tamagotchi-feed-message');
         const screenBorderFill = document.querySelector('#screen-border-fill');
 
@@ -793,18 +796,22 @@
             tamagotchiContainer.title = 'Clique para alimentar seu peixinho!';
             tamagotchiContainer.addEventListener('click', triggerTamagotchiFeed);
         }
-        if (algaeButton && aquariumAlgae) {
-            algaeButton.setAttribute('aria-pressed', 'false');
-            algaeButton.addEventListener('click', (e) => {
+        function setupDecorationToggle(button, decoration, name) {
+            if (!button || !decoration) return;
+            button.setAttribute('aria-pressed', 'false');
+            button.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const algaeAdded = aquariumAlgae.hidden;
-                aquariumAlgae.hidden = !algaeAdded;
-                const action = algaeAdded ? 'Retirar alga' : 'Adicionar alga';
-                algaeButton.setAttribute('aria-label', action);
-                algaeButton.title = action;
-                algaeButton.setAttribute('aria-pressed', String(algaeAdded));
+                const decorationAdded = decoration.hidden;
+                decoration.hidden = !decorationAdded;
+                const action = `${decorationAdded ? 'Retirar' : 'Adicionar'} ${name}`;
+                button.setAttribute('aria-label', action);
+                button.title = action;
+                button.setAttribute('aria-pressed', String(decorationAdded));
             });
         }
+
+        setupDecorationToggle(algaeButton, aquariumAlgae, 'alga');
+        setupDecorationToggle(castleButton, aquariumCastle, 'castelo');
 
         feedButtons.forEach(btn => {
             btn.style.cursor = 'pointer';
