@@ -363,10 +363,6 @@ body::before {
     outline-offset: 3px;
 }
 
-.tamagotchi-buttons button[aria-pressed="true"] {
-    background: #238636;
-}
-
 .pet-fish {
     display: inline-block;
     position: absolute;
