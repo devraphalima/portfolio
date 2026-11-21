@@ -70,6 +70,7 @@
                     <span></span><span></span><span></span>
                 </div>
             </div>
+            <p class="tamagotchi-feed-status" id="tamagotchi-feed-status" aria-live="polite">Camarões: 0 / 300</p>
             <section class="marble-game" aria-label="Jogo de bolinhas coloridas">
                 <div class="marble-board" id="marble-board" tabindex="0" aria-label="Jogo Marble Shot">
                     <!-- Pontuação acumulada no topo (apenas o número, oculto por padrão, zera ao desacelerar) -->
@@ -682,12 +683,11 @@
         const tamagotchiContainer = document.querySelector('.tamagotchi-container');
         const tamagotchiScreen = document.querySelector('.tamagotchi-screen');
         const tamagotchiButtons = document.querySelectorAll('.tamagotchi-buttons span');
-        const screenBorderSvg = document.querySelector('.tamagotchi-screen-border');
         const screenBorderFill = document.querySelector('#screen-border-fill');
+        const tamagotchiFeedStatus = document.querySelector('#tamagotchi-feed-status');
 
         let screenBorderLength = 0;
-        let borderHideTimeout = null;
-        const maxFeedLevel = 1000; // Avança bem pouco por clique para permitir 500 a 1000 cliques
+        const maxFeedLevel = 300;
         let feedLevel = 0;
         try {
             feedLevel = parseInt(localStorage.getItem('tamagotchi_feed_count') || '0', 10);
@@ -695,17 +695,9 @@
         } catch (e) {
             feedLevel = 0;
         }
+        feedLevel = Math.max(0, Math.min(maxFeedLevel, feedLevel));
 
         let lastHeartTime = 0;
-
-        function showScreenBorderTemporarily() {
-            if (!screenBorderSvg) return;
-            screenBorderSvg.classList.add('visible');
-            if (borderHideTimeout) clearTimeout(borderHideTimeout);
-            borderHideTimeout = setTimeout(() => {
-                screenBorderSvg.classList.remove('visible');
-            }, 2000); // Oculta a barrinha após 2 segundos sem novos cliques
-        }
 
         function initScreenBorder() {
             if (!screenBorderFill) return;
@@ -723,6 +715,9 @@
             if (!screenBorderFill || screenBorderLength <= 0) return;
             const ratio = Math.max(0, Math.min(1, feedLevel / maxFeedLevel));
             screenBorderFill.style.strokeDashoffset = screenBorderLength * (1 - ratio);
+            if (tamagotchiFeedStatus) {
+                tamagotchiFeedStatus.textContent = `Camarões: ${feedLevel} / ${maxFeedLevel}`;
+            }
 
             if (ratio >= 1) {
                 screenBorderFill.classList.add('full');
@@ -746,7 +741,6 @@
                 localStorage.setItem('tamagotchi_feed_count', feedLevel);
             } catch (e) {}
             updateScreenBorder();
-            showScreenBorderTemporarily();
 
             // Evita sobrecarregar o DOM com muitos camarões em cliques contínuos/rápidos
             const existingFood = tamagotchiScreen.querySelectorAll('.feed-shrimp');
