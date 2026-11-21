@@ -2,5 +2,5 @@
 
 visite meu portfolio: [https://devraphalima.github.io/portfolio/](https://devraphalima.github.io/portfolio/)
 
-![Projetos do portfolio: Sistematikets, BYTE QUEST e Game Aprender Código](telainicial.jpeg)
+![Preview do portfolio com os projetos Sistematikets, BYTE QUEST e Game Aprender Código](telainicial.png)
 
