@@ -70,7 +70,6 @@
                     <span></span><span></span><span></span>
                 </div>
             </div>
-            <p class="tamagotchi-feed-status" id="tamagotchi-feed-status" aria-live="polite">Camarões: 0 / 300</p>
             <section class="marble-game" aria-label="Jogo de bolinhas coloridas">
                 <div class="marble-board" id="marble-board" tabindex="0" aria-label="Jogo Marble Shot">
                     <!-- Pontuação acumulada no topo (apenas o número, oculto por padrão, zera ao desacelerar) -->
@@ -684,10 +683,9 @@
         const tamagotchiScreen = document.querySelector('.tamagotchi-screen');
         const tamagotchiButtons = document.querySelectorAll('.tamagotchi-buttons span');
         const screenBorderFill = document.querySelector('#screen-border-fill');
-        const tamagotchiFeedStatus = document.querySelector('#tamagotchi-feed-status');
 
         let screenBorderLength = 0;
-        const maxFeedLevel = 300;
+        const maxFeedLevel = 50;
         let feedLevel = 0;
         try {
             feedLevel = parseInt(localStorage.getItem('tamagotchi_feed_count') || '0', 10);
@@ -715,18 +713,15 @@
             if (!screenBorderFill || screenBorderLength <= 0) return;
             const ratio = Math.max(0, Math.min(1, feedLevel / maxFeedLevel));
             screenBorderFill.style.strokeDashoffset = screenBorderLength * (1 - ratio);
-            if (tamagotchiFeedStatus) {
-                tamagotchiFeedStatus.textContent = `Camarões: ${feedLevel} / ${maxFeedLevel}`;
-            }
 
             if (ratio >= 1) {
                 screenBorderFill.classList.add('full');
                 if (tamagotchiScreen) tamagotchiScreen.classList.add('screen-fed-full');
-                if (tamagotchiContainer) tamagotchiContainer.title = `Peixinho 100% alimentado! (${feedLevel} camarões) 🌟`;
+                if (tamagotchiContainer) tamagotchiContainer.title = 'Peixinho 100% alimentado! 🌟';
             } else if (ratio > 0) {
                 screenBorderFill.classList.remove('full');
                 if (tamagotchiScreen) tamagotchiScreen.classList.remove('screen-fed-full');
-                if (tamagotchiContainer) tamagotchiContainer.title = `Camarões dados: ${feedLevel} / ${maxFeedLevel}`;
+                if (tamagotchiContainer) tamagotchiContainer.title = `Peixinho alimentado: ${Math.round(ratio * 100)}%`;
             } else {
                 screenBorderFill.classList.remove('full');
                 if (tamagotchiScreen) tamagotchiScreen.classList.remove('screen-fed-full');
