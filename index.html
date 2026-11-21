@@ -60,6 +60,7 @@
                 <div class="tamagotchi-screen">
                     <div class="pet-fish">🐠</div>
                     <div class="water-bubbles">🫧</div>
+                    <span class="aquarium-algae" aria-hidden="true" hidden>🌿</span>
                     <!-- Contorno da Borda da Tela (avança ao alimentar) -->
                     <svg class="tamagotchi-screen-border" viewBox="0 0 90 80">
                         <rect class="screen-border-bg" x="1.5" y="1.5" width="87" height="77" rx="10.5" ry="10.5" />
@@ -67,7 +68,9 @@
                     </svg>
                 </div>
                 <div class="tamagotchi-buttons">
-                    <span></span><span></span><span></span>
+                    <button type="button" aria-label="Adicionar alga" title="Adicionar alga"></button>
+                    <button type="button" aria-label="Alimentar peixinho" title="Alimentar peixinho"></button>
+                    <button type="button" aria-label="Alimentar peixinho" title="Alimentar peixinho"></button>
                 </div>
             </div>
             <section class="marble-game" aria-label="Jogo de bolinhas coloridas">
@@ -681,7 +684,10 @@
         // Interação com o Aquário Tamagotchi (Alimentar e Contorno da Borda da Tela)
         const tamagotchiContainer = document.querySelector('.tamagotchi-container');
         const tamagotchiScreen = document.querySelector('.tamagotchi-screen');
-        const tamagotchiButtons = document.querySelectorAll('.tamagotchi-buttons span');
+        const tamagotchiButtons = document.querySelectorAll('.tamagotchi-buttons button');
+        const algaeButton = tamagotchiButtons[0];
+        const feedButtons = Array.from(tamagotchiButtons).slice(1);
+        const aquariumAlgae = document.querySelector('.aquarium-algae');
         const screenBorderFill = document.querySelector('#screen-border-fill');
 
         let screenBorderLength = 0;
@@ -784,7 +790,20 @@
             tamagotchiContainer.title = 'Clique para alimentar seu peixinho!';
             tamagotchiContainer.addEventListener('click', triggerTamagotchiFeed);
         }
-        tamagotchiButtons.forEach(btn => {
+        if (algaeButton && aquariumAlgae) {
+            algaeButton.setAttribute('aria-pressed', 'false');
+            algaeButton.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const algaeAdded = aquariumAlgae.hidden;
+                aquariumAlgae.hidden = !algaeAdded;
+                const action = algaeAdded ? 'Retirar alga' : 'Adicionar alga';
+                algaeButton.setAttribute('aria-label', action);
+                algaeButton.title = action;
+                algaeButton.setAttribute('aria-pressed', String(algaeAdded));
+            });
+        }
+
+        feedButtons.forEach(btn => {
             btn.style.cursor = 'pointer';
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();

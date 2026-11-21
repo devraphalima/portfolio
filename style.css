@@ -341,9 +341,11 @@ body::before {
     margin-top: 15px;
 }
 
-.tamagotchi-buttons span {
+.tamagotchi-buttons button {
+    appearance: none;
     width: 12px;
     height: 12px;
+    padding: 0;
     background: #21262d;
     border-radius: 50%;
     border: 1px solid #30363d;
@@ -351,9 +353,18 @@ body::before {
     transition: background-color 0.15s ease, transform 0.1s ease;
 }
 
-.tamagotchi-buttons span:hover {
+.tamagotchi-buttons button:hover {
     background: #30363d;
     transform: scale(1.1);
+}
+
+.tamagotchi-buttons button:focus-visible {
+    outline: 2px solid #79c0ff;
+    outline-offset: 3px;
+}
+
+.tamagotchi-buttons button[aria-pressed="true"] {
+    background: #238636;
 }
 
 .pet-fish {
@@ -364,6 +375,24 @@ body::before {
     font-size: 20px;
     animation: swim-tank 8s linear infinite;
     filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.3));
+}
+
+.aquarium-algae {
+    position: absolute;
+    bottom: 3px;
+    left: 5px;
+    z-index: 11;
+    font-size: 24px;
+    line-height: 1;
+    transform-origin: bottom center;
+    animation: algae-sway 2.4s ease-in-out infinite alternate;
+    filter: drop-shadow(0 1px 2px rgba(0, 50, 0, 0.45));
+    pointer-events: none;
+}
+
+@keyframes algae-sway {
+    from { transform: rotate(-8deg); }
+    to { transform: rotate(8deg); }
 }
 
 /* Contorno de progresso da alimentação do peixe */
