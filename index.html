@@ -73,6 +73,7 @@
                     <button type="button" aria-label="Alimentar peixe" title="Alimentar peixe"></button>
                 </div>
             </div>
+            <p class="tamagotchi-feed-message" id="tamagotchi-feed-message" aria-live="polite" hidden>Peixe alimentado!</p>
             <section class="marble-game" aria-label="Jogo de bolinhas coloridas">
                 <div class="marble-board" id="marble-board" tabindex="0" aria-label="Jogo Marble Shot">
                     <!-- Pontuação acumulada no topo (apenas o número, oculto por padrão, zera ao desacelerar) -->
@@ -688,6 +689,7 @@
         const algaeButton = tamagotchiButtons[0];
         const feedButtons = Array.from(tamagotchiButtons).slice(1);
         const aquariumAlgae = document.querySelector('.aquarium-algae');
+        const tamagotchiFeedMessage = document.querySelector('#tamagotchi-feed-message');
         const screenBorderFill = document.querySelector('#screen-border-fill');
 
         let screenBorderLength = 0;
@@ -719,19 +721,20 @@
             if (!screenBorderFill || screenBorderLength <= 0) return;
             const ratio = Math.max(0, Math.min(1, feedLevel / maxFeedLevel));
             screenBorderFill.style.strokeDashoffset = screenBorderLength * (1 - ratio);
+            if (tamagotchiFeedMessage) tamagotchiFeedMessage.hidden = ratio < 1;
 
             if (ratio >= 1) {
                 screenBorderFill.classList.add('full');
                 if (tamagotchiScreen) tamagotchiScreen.classList.add('screen-fed-full');
-                if (tamagotchiContainer) tamagotchiContainer.title = 'Peixinho 100% alimentado! 🌟';
+                if (tamagotchiContainer) tamagotchiContainer.title = 'Peixe 100% alimentado! 🌟';
             } else if (ratio > 0) {
                 screenBorderFill.classList.remove('full');
                 if (tamagotchiScreen) tamagotchiScreen.classList.remove('screen-fed-full');
-                if (tamagotchiContainer) tamagotchiContainer.title = `Peixinho alimentado: ${Math.round(ratio * 100)}%`;
+                if (tamagotchiContainer) tamagotchiContainer.title = `Peixe alimentado: ${Math.round(ratio * 100)}%`;
             } else {
                 screenBorderFill.classList.remove('full');
                 if (tamagotchiScreen) tamagotchiScreen.classList.remove('screen-fed-full');
-                if (tamagotchiContainer) tamagotchiContainer.title = 'Clique para alimentar seu peixinho!';
+                if (tamagotchiContainer) tamagotchiContainer.title = 'Clique para alimentar o peixe!';
             }
         }
 
